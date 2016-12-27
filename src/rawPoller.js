@@ -1,5 +1,6 @@
 var http = require('http');
 var moment = require('moment-timezone');
+var snmp = require('net-snmp')
 //var moment = require('/home/rbalak/node/node_modules/moment-timezone/moment-timezone');
 var config = require("./config.js");
 var influxDb = require("./influxDbFunctions.js");
