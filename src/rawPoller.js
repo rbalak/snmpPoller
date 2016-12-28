@@ -28,8 +28,8 @@ var parseResponse = function(ip, varbinds){
 		}
         else
 		{
-			var metricName = "metric1";
-			metricRecordKey = "ip="+ip+";oid="+varbinds[i].oid;
+			var metricName = "Metric1";
+			metricRecordKey = "Device=D1";
 			metricValue = varbinds[i].value;
 			metricTimestamp = Math.floor(new Date());
 			content = metricName + "," + metricRecordKey + " value=" + metricValue + " " + metricTimestamp;
