@@ -14,9 +14,9 @@ var poll = function(ip, cString, oids, frequency ){
 			parseResponse(ip, varbinds);
 		}
 	});
-	//setTimeout(function(){
-	//	run(ip, cString, oids, frequency);
-    //}frequency);
+	setTimeout(function(){
+		run(ip, cString, oids, frequency);
+    },frequency);
 }
 	
 

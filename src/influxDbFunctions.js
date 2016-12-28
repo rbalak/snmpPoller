@@ -1,6 +1,27 @@
 var http = require('http');
 var config = require("./config.js");
 
+var createdb =function(){
+	var header =
+        {
+                'content-type': 'text/plain'
+        };
+        var host = process.env.INFLUX_DB_HOST;
+        var port = process.env.INFLUX_DB_PORT;
+        var path = config.influxDReadPath+ "&q=" + encodeURIComponent("CREATE DATABASE " + config.pmStatsDB);
+        var options = {
+                        header: header,
+                        host: host,
+                        port: port,
+                        path: path,
+                        method: 'POST'
+                        };
+        var req = http.request(options,function(res){
+
+        });
+        req.end();
+}
+
 var write = function(content){
 
         var header =
@@ -59,7 +80,8 @@ var read = function(query, callback){
 module.exports =
 {
 	write: write,
-	read: read
+	read: read,
+	createdb: createdb
 }
 
 

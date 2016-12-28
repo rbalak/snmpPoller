@@ -1,0 +1,47 @@
+--- 
+networks: 
+  collection-tier: ~
+  front-tier: ~
+  network-tier: ~
+services: 
+  grafana: 
+    container_name: grafana
+    image: grafana/grafana
+    networks: 
+      - front-tier
+    ports: 
+      - "3000:3000"
+  influxdb: 
+    container_name: influxdb
+    image: influxdb
+    networks: 
+      - front-tier
+      - collection-tier
+    ports: 
+      - "8086:8086"
+    volumes: 
+      - "influxdb:/var/lib/influxdb"
+  snmppoller: 
+    container_name: snmppoller
+    environment: 
+      INFLUX_DB_HOST: influxdb
+      INFLUX_DB_PORT: 8086
+    image: "rbalak/snmppoller:0.0.1"
+    depends_on:
+        - influxdb
+        - snmpsim
+    networks: 
+      - collection-tier
+  snmpsim: 
+    container_name: simulator
+    image: tandrup/snmpsim
+    networks: 
+      - network-tier
+    ports: 
+      - "161:161/udp"
+    volumes: 
+      - "snmp-data:/usr/share/snmpsim/data"
+version: "2"
+volumes: 
+  influxdb: ~
+  snmp-data: ~
