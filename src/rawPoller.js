@@ -31,7 +31,7 @@ var parseResponse = function(ip, varbinds){
 			var metricName = varbinds[i].oid;
 			metricRecordKey = "ip="+ip+"oid="+varbinds[i].oid;
 			value = varbinds[i].value;
-			metricTimestamp = datetime .now();
+			metricTimestamp = datetime.getTime();
 			content = metricName + "," + metricRecordKey + " value=" + metricValue + " " + metricTimestamp;
 			console.write(content);
 			//influxDb.write(content);
