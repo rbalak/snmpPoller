@@ -33,7 +33,7 @@ var parseResponse = function(ip, varbinds){
 			metricValue = varbinds[i].value;
 			metricTimestamp = Math.floor((new Date())/1000);
 			content = metricName + "," + metricRecordKey + " value=" + metricValue + " " + metricTimestamp;
-			console.write(content);
+			console.log(content);
 			//influxDb.write(content);
 		}
 	}
