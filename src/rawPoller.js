@@ -21,8 +21,8 @@ var poll = function(ip, cString, oids, frequency ){
 	
 
 var parseResponse = function(varbinds){
-	
-	for (var i = 0; i < varbinds.length; i++){
+	for (var i = 0; i < varbinds.length; i++)
+	{
 		if (snmp.isVarbindError (varbinds[i])){
             // console.error (snmp.varbindError (varbinds[i]))
 		}
@@ -36,8 +36,7 @@ var parseResponse = function(varbinds){
 			console.write(content);
 			//influxDb.write(content);
 		}
-		
-	});
+	}
 }
 
 module.exports = 
