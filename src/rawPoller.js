@@ -8,7 +8,7 @@ var poll = function(ip, cString, oids, frequency ){
 	var session = snmp.createSession (ip, cString);
 	session.get(oids, function (error, varbinds) {
 		if (error) {
-			//console.error (error);
+			console.error (error);
 		} 
 		else {
 			parseResponse(ip, varbinds);
