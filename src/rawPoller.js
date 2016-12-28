@@ -17,7 +17,7 @@ var poll = function(ip, cString, oids, frequency ){
 	setTimeout(function(){
 		run(ip, cString, oids, frequency);
     }frequency);
-});
+}
 	
 
 var parseResponse = function(varbinds){
