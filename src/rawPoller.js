@@ -33,7 +33,8 @@ var parseResponse = function(varbinds){
 			value = varbinds[i].value;
 			metricTimestamp = datetime .now();
 			content = metricName + "," + metricRecordKey + " value=" + metricValue + " " + metricTimestamp;
-			influxDb.write(content);
+			console.write(content);
+			//influxDb.write(content);
 		}
 		
 	});
