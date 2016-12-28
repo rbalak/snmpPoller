@@ -7,8 +7,8 @@ var write = function(content){
         {
                 'content-type': 'text/plain'
         };
-        var host = config.influxDBHost;
-        var port = config.influxDBPort;
+        var host = process.env.INFLUX_DB_HOST;
+        var port = process.env.INFLUX_DB_PORT;
         var path = config.influxDBwritePath + "?db=" + config.pmStatsDB + config.precisionms;
         var options = {
                         header: header,
@@ -33,8 +33,8 @@ var read = function(query, callback){
         {
                 'content-type': 'text/plain'
         };
-        var host = config.influxDBHost;
-        var port = config.influxDBPort;
+        var host = process.env.INFLUX_DB_HOST;
+        var port = process.env.INFLUX_DB_PORT;
         var path = config.influxDReadPath + "&db=" + config.pmStatsDB + "&epoch=s" + "&q="+ encodeURIComponent(query);
         var options = {
                         header: header,
