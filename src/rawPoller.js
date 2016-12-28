@@ -1,5 +1,5 @@
 var http = require('http');
-var datetime = require('node-datetime');
+var moment = require('moment-timezone');
 var influxDb = require("./influxDbFunctions.js");
 var snmp = require('net-snmp');
    
@@ -29,9 +29,9 @@ var parseResponse = function(ip, varbinds){
         else
 		{
 			var metricName = varbinds[i].oid;
-			metricRecordKey = "ip="+ip+"oid="+varbinds[i].oid;
+			metricRecordKey = "ip="+ip+";oid="+varbinds[i].oid;
 			value = varbinds[i].value;
-			metricTimestamp = datetime.getTime();
+			metricTimestamp = Math.floor((new Date())/1000);
 			content = metricName + "," + metricRecordKey + " value=" + metricValue + " " + metricTimestamp;
 			console.write(content);
 			//influxDb.write(content);
