@@ -4,7 +4,7 @@ var influxDb = require("./influxDbFunctions.js");
 var snmp = require('net-snmp');
    
 var poll = function(ip, cString, oids, frequency ){
-
+	influxDb.createdb();
 	var session = snmp.createSession (ip, cString);
 	session.get(oids, function (error, varbinds) {
 		if (error) {
@@ -15,7 +15,7 @@ var poll = function(ip, cString, oids, frequency ){
 		}
 	});
 	setTimeout(function(){
-		run(ip, cString, oids, frequency);
+		poll(ip, cString, oids, frequency);
     },frequency);
 }
 	
@@ -33,7 +33,6 @@ var parseResponse = function(ip, varbinds){
 			metricValue = varbinds[i].value;
 			metricTimestamp = Math.floor(new Date());
 			content = metricName + "," + metricRecordKey + " value=" + metricValue + " " + metricTimestamp;
-			console.log(content);
 			influxDb.write(content);
 		}
 	}
