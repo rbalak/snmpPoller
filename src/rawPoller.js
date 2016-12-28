@@ -20,7 +20,7 @@ var poll = function(ip, cString, oids, frequency ){
 }
 	
 
-var parseResponse = function(varbinds){
+var parseResponse = function(ip, varbinds){
 	for (var i = 0; i < varbinds.length; i++)
 	{
 		if (snmp.isVarbindError (varbinds[i])){
