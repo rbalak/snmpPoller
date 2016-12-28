@@ -17,12 +17,12 @@ var write = function(content){
                         path: path,
                         method: 'POST'
                         };
+		console.log(options);
+		console.log(content);
         var req = http.request(options,function(res){
-          //      console.log(res.statusCode);
+
         });
         req.write(content);
-		//console.log(options);
-		//console.log(content);
         req.end();
 }
 

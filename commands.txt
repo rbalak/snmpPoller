@@ -1,0 +1,21 @@
+docker run -p 8083:8083 -p 8086:8086 -d --name influxdb\
+      -v /home/docker/vol/influxdb:/var/lib/influxdb \
+      influxdb
+	  
+docker run -p 3000:3000 --name grafana grafana
+
+docker run -v /somewhere/with/snmpwalks:/usr/share/snmpsim/data \
+           -p 161:161/udp \
+           tandrup/snmpsim
+		   
+docker run -p 161:161/udp -d --name snmpsim tandrup/snmpsim		
+
+docker build -t snmpPoller:0.0.1 https://github.com/rbalak/snmpPoller.git
+
+
+
+
+docker build -t rbalak/snmppoller:0.0.1 http://10.155.153.121/Connect-Arch/hackCamp-snmpPoller.git
+docker run -d --name snmppoller rbalak/snmppoller:0.0.1
+
+

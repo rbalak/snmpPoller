@@ -24,17 +24,17 @@ var parseResponse = function(ip, varbinds){
 	for (var i = 0; i < varbinds.length; i++)
 	{
 		if (snmp.isVarbindError (varbinds[i])){
-            // console.error (snmp.varbindError (varbinds[i]))
+            console.error (snmp.varbindError (varbinds[i]));
 		}
         else
 		{
-			var metricName = varbinds[i].oid;
+			var metricName = "metric1";
 			metricRecordKey = "ip="+ip+";oid="+varbinds[i].oid;
 			metricValue = varbinds[i].value;
-			metricTimestamp = Math.floor((new Date())/1000);
+			metricTimestamp = Math.floor(new Date());
 			content = metricName + "," + metricRecordKey + " value=" + metricValue + " " + metricTimestamp;
 			console.log(content);
-			//influxDb.write(content);
+			influxDb.write(content);
 		}
 	}
 }
