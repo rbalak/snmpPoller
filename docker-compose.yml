@@ -37,6 +37,7 @@ services:
       INFLUX_DB_PORT: 8086
       POLL_DEVICE: simulator
       COMMUNITY_STRING: demo
+      POLL_FREQUENCY: 30000
     image: "rbalak/snmppoller:0.0.1"
     networks: 
       - collection-tier
