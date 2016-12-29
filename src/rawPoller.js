@@ -30,7 +30,7 @@ var parseResponse = function(ip, varbinds){
 		{
 			var metricName = "Metric1";
 			metricRecordKey = "Device=D1";
-			metricValue = varbinds[i].value;
+			metricValue = varbinds[i].value * Math.random(0,100);
 			metricTimestamp = Math.floor(new Date());
 			content = metricName + "," + metricRecordKey + " value=" + metricValue + " " + metricTimestamp;
 			influxDb.write(content);
