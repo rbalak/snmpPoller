@@ -13,9 +13,9 @@ services:
     ports: 
       - "3000:3000"
     volumes:
-      - etc_grafana: /etc/grafana
-      - lib_grafana: /var/lib/grafana
-      - log_grafana: /var/log/grafana
+      - "etc_grafana:/etc/grafana"
+      - "lib_grafana:/var/lib/grafana"
+      - "log_grafana:/var/log/grafana"
   influxdb: 
     container_name: influxdb
     image: influxdb
@@ -53,3 +53,6 @@ version: "2"
 volumes: 
   influxdb: ~
   snmp-data: ~
+  etc_grafana: ~
+  log_grafana: ~
+  lib_grafana: ~
